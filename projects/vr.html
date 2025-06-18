@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>多模态交互增强听声辨位地板系统 | 葵音项目集</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --dark-bg: #0a0a16;
+            --card-bg: #121230;
+            --accent-blue: #4361ee;
+            --accent-purple: #9d4edd;
+            --accent-teal: #4cc9f0;
+            --accent-green: #2ec4b6;
+            --text-light: #e6f1ff;
+            --text-gray: #a8b2d1;
+            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--dark-bg);
+            color: var(--text-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(67, 97, 238, 0.1) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(157, 78, 221, 0.1) 0%, transparent 20%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* 头部样式 */
+        .project-header {
+            padding: 80px 0 40px;
+            text-align: center;
+            position: relative;
+        }
+
+        .back-btn {
+            position: absolute;
+            left: 0;
+            top: 30px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--accent-teal);
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: var(--transition);
+        }
+
+        .back-btn:hover {
+            color: var(--accent-blue);
+            transform: translateX(-5px);
+        }
+
+        .project-title {
+            font-size: 3.2rem;
+            margin: 20px 0 10px;
+            background: linear-gradient(90deg, var(--accent-blue), var(--accent-teal));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: gradientShift 8s infinite alternate;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 100% 50%; }
+        }
+
+        .project-subtitle {
+            font-size: 1.3rem;
+            color: var(--text-gray);
+            max-width: 800px;
+            margin: 0 auto 30px;
+        }
+
+        .project-meta {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.1rem;
+        }
+
+        .meta-icon {
+            color: var(--accent-green);
+            font-size: 1.3rem;
+        }
+
+        /* 内容区域 */
+        .project-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 50px;
+            padding: 50px 0;
+        }
+
+        .section {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: var(--transition);
+        }
+
+        .section:hover {
+            border-color: rgba(67, 97, 238, 0.3);
+            transform: translateY(-5px);
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 25px;
+            color: var(--accent-teal);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid rgba(67, 97, 238, 0.2);
+        }
+
+        .section-title i {
+            font-size: 1.8rem;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin: 25px 0;
+        }
+
+        .tech-item {
+            background: rgba(67, 97, 238, 0.15);
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: var(--transition);
+        }
+
+        .tech-item:hover {
+            background: rgba(67, 97, 238, 0.3);
+            transform: translateY(-3px);
+        }
+
+        .architecture {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .architecture-item {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            padding: 25px;
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .architecture-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 25px rgba(67, 97, 238, 0.2);
+        }
+
+        .architecture-icon {
+            font-size: 3rem;
+            color: var(--accent-blue);
+            margin-bottom: 20px;
+            transition: var(--transition);
+        }
+
+        .architecture-item:hover .architecture-icon {
+            color: var(--accent-teal);
+            transform: scale(1.1);
+        }
+
+        .data-comparison {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .data-card {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            padding: 25px;
+            text-align: center;
+            min-width: 220px;
+            flex: 1;
+            transition: var(--transition);
+        }
+
+        .data-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(46, 196, 182, 0.2);
+        }
+
+        .data-value {
+            font-size: 2.8rem;
+            font-weight: bold;
+            color: var(--accent-green);
+            margin: 15px 0;
+            position: relative;
+        }
+
+        .data-value::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: var(--accent-teal);
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 */
+            height: 0;
+            overflow: hidden;
+            border-radius: 10px;
+            margin-top: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .achievement-badge {
+            display: inline-block;
+            background: linear-gradient(45deg, var(--accent-purple), var(--accent-blue));
+            color: white;
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-size: 1rem;
+            margin-right: 15px;
+            margin-bottom: 15px;
+            transition: var(--transition);
+        }
+
+        .achievement-badge:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(157, 78, 221, 0.4);
+        }
+
+        /* 创新点部分 */
+        .innovation-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .innovation-card {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            padding: 25px;
+            position: relative;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .innovation-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: var(--accent-teal);
+        }
+
+        .innovation-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(67, 97, 238, 0.2);
+        }
+
+        .innovation-icon {
+            font-size: 2.5rem;
+            color: var(--accent-blue);
+            margin-bottom: 20px;
+        }
+
+        /* 页脚 */
+        footer {
+            text-align: center;
+            padding: 50px 0;
+            margin-top: 30px;
+            color: var(--text-gray);
+            font-size: 0.95rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 25px 0;
+        }
+
+        .social-link {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-light);
+            font-size: 1.3rem;
+            transition: var(--transition);
+        }
+
+        .social-link:hover {
+            background: var(--accent-blue);
+            transform: translateY(-5px);
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .project-title {
+                font-size: 2.2rem;
+            }
+            
+            .project-subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .section {
+                padding: 25px;
+            }
+            
+            .data-comparison {
+                flex-direction: column;
+            }
+            
+            .data-card {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="project-header">
+            <a href="../index.html" class="back-btn">
+                <i class="fas fa-arrow-left"></i> 返回首页
+            </a>
+            <h1 class="project-title">多模态交互增强听声辨位地板系统</h1>
+            <p class="project-subtitle">结合声音与振动反馈的沉浸式空间定位增强系统</p>
+            <p class="project-subtitle">本项目的详情仍在更新中</p>
+            <div class="project-meta">
+                <div class="meta-item">
+                    <i class="fas fa-calendar-alt meta-icon"></i>
+                    <span>2023年9月 - 至今</span>
+                </div>
+                <div class="meta-item">
+                    <i class="fas fa-user meta-icon"></i>
+                    <span>文嘉懿 | 南方科技大学</span>
+                </div>
+                <div class="meta-item">
+                    <i class="fas fa-tag meta-icon"></i>
+                    <span>人机交互、多模态交互、虚拟现实</span>
+                </div>
+            </div>
+        </header>
+        
+        <main class="project-content">
+            <!-- 项目概述 -->
+            <section class="section">
+                <h2 class="section-title">
+                    <i class="fas fa-info-circle"></i> 项目概述
+                </h2>
+                <p>本项目设计并实现了一种结合声音与振动反馈的多通道渲染系统，通过构建八通道输出与人因感知模型联动的交互式地板设备，显著提升用户在虚拟环境中的声音定位能力。</p>
+                
+                <div class="innovation-grid">
+                    <div class="innovation-card">
+                        <div class="innovation-icon">
+                            <i class="fas fa-bullseye"></i>
+                        </div>
+                        <h3>问题背景</h3>
+                        <p>传统VR系统在声音定位方面存在明显不足：</p>
+                        <ul>
+                            <li>耳机音频难以准确模拟三维空间声场</li>
+                            <li>缺乏触觉反馈导致空间感知不完整</li>
+                            <li>用户声音方向辨识准确率低（HTC VIVE系统约62%）</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="innovation-card">
+                        <div class="innovation-icon">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        <h3>创新解决方案</h3>
+                        <p>提出基于位置与事件类型的多模态渲染算法：</p>
+                        <ul>
+                            <li>声音通道与振动单元的精确空间映射</li>
+                            <li>声音特征与振动波形的耦合优化</li>
+                            <li>相对位置与震动强度实时映射</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- 技术架构 -->
+            <section class="section">
+                <h2 class="section-title">
+                    <i class="fas fa-sitemap"></i> 系统架构
+                </h2>
+                
+                <div class="architecture">
+                    <div class="architecture-item">
+                        <div class="architecture-icon">
+                            <i class="fas fa-shoe-prints"></i>
+                        </div>
+                        <h3>交互地板</h3>
+                        <p>8振动单元矩阵<br>精准对位足底感知域限<br>优良低频频率响应</p>
+                    </div>
+                    
+                    <div class="architecture-item">
+                        <div class="architecture-icon">
+                            <i class="fas fa-laptop-code"></i>
+                        </div>
+                        <h3>处理核心</h3>
+                        <p>C#实时位置追踪<br>Max/MSP信号处理<br>人因感知模型计算</p>
+                    </div>
+                    
+                    <div class="architecture-item">
+                        <div class="architecture-icon">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <h3>用户交互</h3>
+                        <p>VR头显定位<br>陀螺仪确认朝向<br>多模态反馈体验</p>
+                    </div>
+                </div>
+                
+                <h3>工作流程</h3>
+                <div class="workflow">
+                    <div class="workflow-step">
+                        <div class="workflow-icon"><i class="fas fa-vr-cardboard"></i></div>
+                        <div class="workflow-desc">通过VR头显获取用户位置和朝向</div>
+                    </div>
+                    <div class="workflow-arrow"><i class="fas fa-arrow-down"></i></div>
+                    <div class="workflow-step">
+                        <div class="workflow-icon"><i class="fas fa-location-arrow"></i></div>
+                        <div class="workflow-desc">根据虚拟声源位置计算相对方位和距离</div>
+                    </div>
+                    <div class="workflow-arrow"><i class="fas fa-arrow-down"></i></div>
+                    <div class="workflow-step">
+                        <div class="workflow-icon"><i class="fas fa-brain"></i></div>
+                        <div class="workflow-desc">人因感知模型生成多通道音频参数</div>
+                    </div>
+                    <div class="workflow-arrow"><i class="fas fa-arrow-down"></i></div>
+                    <div class="workflow-step">
+                        <div class="workflow-icon"><i class="fas fa-bolt"></i></div>
+                        <div class="workflow-desc">同步计算对应区域的振动反馈强度</div>
+                    </div>
+                    <div class="workflow-arrow"><i class="fas fa-arrow-down"></i></div>
+                    <div class="workflow-step">
+                        <div class="workflow-icon"><i class="fas fa-th-large"></i></div>
+                        <div class="workflow-desc">通过8通道振动矩阵输出</div>
+                    </div>
+                </div>
+                <style>
+                .workflow {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    margin: 35px 0 25px 0;
+                    gap: 0;
+                }
+                .workflow-step {
+                    display: flex;
+                    align-items: center;
+                    background: rgba(67, 97, 238, 0.10);
+                    border-radius: 12px;
+                    padding: 18px 32px;
+                    margin: 0;
+                    min-width: 260px;
+                    box-shadow: 0 4px 16px rgba(67, 97, 238, 0.08);
+                    transition: box-shadow 0.3s;
+                    gap: 18px;
+                }
+                .workflow-step:not(:last-child) {
+                    margin-bottom: 0;
+                }
+                .workflow-icon {
+                    font-size: 1.8rem;
+                    color: var(--accent-teal);
+                    min-width: 36px;
+                    text-align: center;
+                }
+                .workflow-desc {
+                    font-size: 1.08rem;
+                    color: var(--text-light);
+                    letter-spacing: 0.5px;
+                }
+                .workflow-arrow {
+                    color: var(--accent-blue);
+                    font-size: 1.4rem;
+                    margin: 8px 0;
+                    animation: arrow-bounce 1.2s infinite alternate;
+                }
+                @keyframes arrow-bounce {
+                    0% { transform: translateY(0);}
+                    100% { transform: translateY(8px);}
+                }
+                @media (max-width: 600px) {
+                    .workflow-step {
+                        padding: 12px 10px;
+                        min-width: 0;
+                        font-size: 0.98rem;
+                    }
+                    .workflow-desc {
+                        font-size: 0.98rem;
+                    }
+                }
+                </style>
+            </section>
+            
+            <!-- 核心创新 -->
+            <section class="section">
+                <h2 class="section-title">
+                    <i class="fas fa-star"></i> 核心创新点
+                </h2>
+                
+                <div class="innovation-grid">
+                    <div class="innovation-card">
+                        <div class="innovation-icon">
+                            <i class="fas fa-wave-square"></i>
+                        </div>
+                        <h3>多模态渲染算法</h3>
+                        <p>提出声音-振动耦合反馈模型：</p>
+                        <pre><code>// 伪代码示例
+function renderFeedback(userPos, event) {
+  // 计算相对角度和距离
+  const angle = calculateAngle(userPos, event.position);
+  const distance = calculateDistance(userPos, event.position);
+  
+  // 根据事件类型选择渲染模式
+  if (event.type === 'directional') {
+    // 方向性事件（如枪声）
+    audioParams = directionalAudioModel(angle, distance);
+    vibrationParams = directionalVibrationModel(angle, distance);
+  } else {
+    // 环境事件（如雨声）
+    audioParams = ambientAudioModel(distance);
+    vibrationParams = ambientVibrationModel(distance);
+  }
+  
+  // 应用人因感知优化
+  applyPerceptualOptimization(audioParams, vibrationParams);
+  
+  return { audio: audioParams, vibration: vibrationParams };
+}</code></pre>
+                    </div>
+                    
+                    <div class="innovation-card">
+                        <div class="innovation-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <h3>人因感知优化</h3>
+                        <ul>
+                            <li>声音定位准确率提升模型（基于心理声学研究）</li>
+                            <li>振动强度与频率的自适应映射</li>
+                            <li>多通道反馈的时间同步优化（&lt;5ms误差）</li>
+                            <li>用户个性化参数校准系统</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- 实验成果 -->
+            <section class="section">
+                <h2 class="section-title">
+                    <i class="fas fa-chart-bar"></i> 实验成果
+                </h2>
+                
+                <div class="data-comparison">
+                    <div class="data-card">
+                        <h3>定位准确率</h3>
+                        <div class="data-value">+28.7%</div>
+                        <p>较HTC VIVE系统提升</p>
+                    </div>
+                    
+                    <div class="data-card">
+                        <h3>识别时间</h3>
+                        <div class="data-value">-1.8s</div>
+                        <p>平均识别时间缩短</p>
+                    </div>
+                    
+                    <div class="data-card">
+                        <h3>沉浸感评分</h3>
+                        <div class="data-value">+17%</div>
+                        <p>用户主观评分提升</p>
+                    </div>
+                </div>
+                
+                <h3>实验方法</h3>
+                <ul>
+                    <li>参与者：32名健康成年人（18-35岁）</li>
+                    <li>任务：在虚拟环境中识别随机出现的声音源方向</li>
+                    <li>对照组：HTC VIVE原生音频系统</li>
+                    <li>实验组：本系统（声音+振动反馈）</li>
+                </ul>
+                
+                <h3>结果分析</h3>
+                <p>实验数据表明，多模态反馈系统在以下方面有显著提升：</p>
+                <ul>
+                    <li>前后区域方位声音识别准确率提高37.2%</li>
+                    <li>左右区域方位声音识别准确率提高19.3%/li>
+                    <li>用户空间感知信心评分提高24.5%</li>
+                </ul>
+            </section>
+            
+            <!-- 应用场景 -->
+            <section class="section">
+                <h2 class="section-title">
+                    <i class="fas fa-cubes"></i> 应用场景
+                </h2>
+                
+                <div class="architecture">
+                    <div class="architecture-item">
+                        <div class="architecture-icon">
+                            <i class="fas fa-gamepad"></i>
+                        </div>
+                        <h3>沉浸式游戏</h3>
+                        <p>增强战场环境感知<br>提升恐怖游戏沉浸感<br>音乐节奏游戏新体验</p>
+                    </div>
+                    
+                    <div class="architecture-item">
+                        <div class="architecture-icon">
+                            <i class="fas fa-universal-access"></i>
+                        </div>
+                        <h3>无障碍设计</h3>
+                        <p>视障人士导航系统<br>空间感知能力训练<br>环境危险预警</p>
+                    </div>
+                    
+                    <div class="architecture-item">
+                        <div class="architecture-icon">
+                            <i class="fas fa-vr-cardboard"></i>
+                        </div>
+                        <h3>专业训练</h3>
+                        <p>消防员火场定位训练<br>军事战术训练<br>紧急疏散演练</p>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- 演示与成果 -->
+            <section class="section">
+                <h2 class="section-title">
+                    <i class="fas fa-trophy"></i> 项目成果
+                </h2>
+                
+                <!-- <h3>系统演示</h3>
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
+                </div> -->
+                
+                <h3>相关成果</h3>
+                <p>
+                    <span class="achievement-badge">
+                        <i class="fas fa-book"></i> 会议论文
+                    </span>
+                    <span class="achievement-badge">
+                        <i class="fas fa-gem"></i> 发明专利
+                    </span>
+                </p>
+                <ul>
+                    <li>一篇CCF-A类会议论文在审（一作）</li>
+                    <li>一项发明专利在审（基于多模态反馈的空间定位增强系统及方法）</li>
+                </ul>
+            </section>
+        </main>
+        
+        <footer>
+            <div class="social-links">
+                <a href="https://github.com/ku1yin" class="social-link" target="_blank">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="mailto:12333207@mail.sustech.edu.cn" class="social-link">
+                    <i class="fas fa-envelope"></i>
+                </a>
+                <a href="https://linkedin.com/in/文嘉懿" class="social-link" target="_blank">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+            </div>
+            <p>© 2025 文嘉懿项目集 | 南方科技大学</p>
+            <p>基于多模态交互增强用户听声辨位能力的地板系统</p>
+        </footer>
+    </div>
+
+    <script>
+        // 添加滚动动画效果
+        document.addEventListener('DOMContentLoaded', function() {
+            const sections = document.querySelectorAll('.section');
+            const architectureItems = document.querySelectorAll('.architecture-item');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = 1;
+                        entry.target.style.transform = 'translateY(0)';
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            // 设置初始状态
+            sections.forEach(section => {
+                section.style.opacity = 0;
+                section.style.transform = 'translateY(20px)';
+                section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(section);
+            });
+            
+            architectureItems.forEach(item => {
+                item.style.opacity = 0;
+                item.style.transform = 'translateY(20px)';
+                item.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(item);
+            });
+        });
+    </script>
+</body>
+</html>
