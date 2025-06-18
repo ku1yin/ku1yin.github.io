@@ -328,6 +328,60 @@
             transform: translateY(-5px);
         }
 
+        /* 统一社交图标样式 */
+        .social-link {
+            color: #333;
+            /* 默认灰色，或使用你的网站主色 */
+            transition: color 0.2s;
+            margin: 0 8px;
+            /* 与其他图标间距一致 */
+        }
+
+        .social-link:hover {
+            color: #0077B5;
+            /* LinkedIn蓝/Github黑/你的主题色 */
+        }
+
+        /* 微信二维码悬浮框（与其他工具提示风格一致） */
+        .qr-code {
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            padding: 10px;
+            background: white;
+            border: 1px solid #ddd;
+            /* 与网站边框色一致 */
+            border-radius: 4px;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+        }
+
+        .wechat-tooltip:hover .qr-code {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .qr-code img {
+            width: 100%;
+            height: auto;
+            border-radius: 2px;
+            /* 可选 */
+        }
+
+        .tip {
+            display: block;
+            margin-top: 5px;
+            font-size: 12px;
+            color: #666;
+            /* 副文本颜色 */
+            font-family: sans-serif;
+            /* 与网站字体一致 */
+        }
+
         /* 右上角悬浮简历按钮 */
         /* ...existing code... */
         .resume-float {
@@ -392,7 +446,7 @@
     <div class="container">
         <header>
             <div class="header-content">
-                <h1><i class="fas fa-laptop-code"></i> For Better HCI</h1>
+                <h1><i class="fas fa-laptop-code"></i> For Better HCI and HAII</h1>
                 <p class="subtitle">by ku1yin</p>
                 <!-- 替换原有的技术栈部分 -->
                 <div class="tech-grid">
@@ -554,11 +608,17 @@
                 <a href="https://github.com/ku1yin" class="social-link" target="_blank">
                     <i class="fab fa-github"></i>
                 </a>
-                <a href="https://linkedin.com/in/yourusername" class="social-link" target="_blank">
-                    <i class="fab fa-linkedin-in"></i>
+                <a href="javascript:void(0);" class="social-link wechat-tooltip">
+                    <i class="fa-brands fa-weixin"></i>
+                    <span class="qr-code">
+                        <img src="wechat.jpg" alt="微信二维码">
+                    </span>
                 </a>
-                <a href="https://twitter.com/yourusername" class="social-link" target="_blank">
-                    <i class="fab fa-twitter"></i>
+                <a href="javascript:void(0);" class="social-link wechat-tooltip">
+                    <i class="fa-brands fa-qq"></i>
+                    <span class="qr-code">
+                        <img src="qq.jpg" alt="微信二维码">
+                    </span>
                 </a>
                 <a href="mailto:12333207@mail.sustech.edu.cn" class="social-link">
                     <i class="fas fa-envelope"></i>
