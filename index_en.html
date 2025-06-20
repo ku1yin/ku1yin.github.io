@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
-
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>站在人与智能的交点</title>
+    <title>At the Intersection of Humans and AI</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        /* 原有样式保持不变 */
         :root {
             --dark-bg: #0a0a16;
             --card-bg: #121230;
@@ -51,6 +51,38 @@
             overflow: hidden;
         }
 
+        /* 语言切换按钮 */
+        .lang-switch {
+            position: fixed;
+            top: 28px;
+            right: 100px; /* 放在简历按钮左侧 */
+            z-index: 2000;
+        }
+
+        .lang-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            background: linear-gradient(90deg, #f54ea2, #ff7676);
+            color: #fff;
+            border-radius: 50%;
+            font-size: 0.9rem;
+            font-weight: bold;
+            box-shadow: 0 2px 12px rgba(245, 78, 162, 0.18);
+            border: none;
+            opacity: 0.92;
+            transition: opacity 0.2s, background 0.2s;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .lang-btn:hover {
+            opacity: 1;
+            background: linear-gradient(90deg, #ff7676, #f54ea2);
+        }
+
         /* 简历下载区域 */
         .resume-download {
             margin: 25px 0 30px;
@@ -87,54 +119,6 @@
             font-size: 0.85rem;
             color: var(--text-gray);
             opacity: 0.8;
-        }
-
-        /* 语言切换按钮 */
-        .lang-switch {
-            position: fixed;
-            top: 28px;
-            right: 100px;
-            /* 放在简历按钮左侧 */
-            z-index: 2000;
-        }
-
-        .lang-btn {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 44px;
-            height: 44px;
-            background: linear-gradient(90deg, #f54ea2, #ff7676);
-            color: #fff;
-            border-radius: 50%;
-            font-size: 0.9rem;
-            font-weight: bold;
-            box-shadow: 0 2px 12px rgba(245, 78, 162, 0.18);
-            border: none;
-            opacity: 0.92;
-            transition: opacity 0.2s, background 0.2s;
-            text-decoration: none;
-            cursor: pointer;
-        }
-
-        .lang-btn:hover {
-            opacity: 1;
-            background: linear-gradient(90deg, #ff7676, #f54ea2);
-        }
-
-        /* 响应式调整 */
-        @media (max-width: 768px) {
-
-            .resume-float,
-            .lang-switch {
-                top: 15px;
-                right: 15px;
-            }
-
-            .lang-switch {
-                right: 70px;
-                /* 移动端调整位置 */
-            }
         }
 
         /* 添加呼吸动画效果 */
@@ -482,9 +466,13 @@
                 gap: 10px;
             }
 
-            .resume-float {
+            .resume-float, .lang-switch {
                 top: 15px;
                 right: 15px;
+            }
+            
+            .lang-switch {
+                right: 70px; /* 移动端调整位置 */
             }
         }
     </style>
@@ -521,129 +509,129 @@
 
         <main>
             <div class="projects-grid">
-                <!-- 项目1：嵌入式语音助手 -->
+                <!-- Project 1: Embedded Voice Assistant -->
                 <div class="project-card">
                     <div class="card-header">
                         <div class="card-icon">
-                            <i class="fas fa-microphone-alt"></i> <!-- 语音交互更贴切 -->
+                            <i class="fas fa-microphone-alt"></i>
                         </div>
-                        <h3 class="card-title">嵌入式二次元语音助手</h3>
-                        <p class="card-desc">基于树莓派5的大模型边缘部署方案，支持语音交互</p>
-                        <p class="card-desc">开发中</p>
+                        <h3 class="card-title">Embedded Anime Voice Assistant</h3>
+                        <p class="card-desc">Edge deployment solution for large models based on Raspberry Pi 5, supporting voice interaction</p>
+                        <p class="card-desc">In Development</p>
                     </div>
                     <div class="card-footer">
                         <div class="tags">
-                            <span class="tag">Raspberry Pi</span> <!-- 增加硬件平台 -->
-                            <span class="tag">Python</span> <!-- 边缘计算常用 -->
-                            <span class="tag">TensorFlow Lite</span> <!-- 边缘AI框架 -->
+                            <span class="tag">Raspberry Pi</span>
+                            <span class="tag">Python</span>
+                            <span class="tag">TensorFlow Lite</span>
                         </div>
                         <a href="projects/ongoing.html" class="project-link">
-                            <i class="fas fa-arrow-right"></i> <span style="white-space: nowrap;">详情</span>
+                            <i class="fas fa-arrow-right"></i> <span style="white-space: nowrap;">Details</span>
                         </a>
                     </div>
                 </div>
 
-                <!-- 项目2：多智能体平台 -->
+                <!-- Project 2: Multi-Agent Platform -->
                 <div class="project-card">
                     <div class="card-header">
                         <div class="card-icon">
-                            <i class="fas fa-comments"></i> <!-- 强调交互特性 -->
+                            <i class="fas fa-comments"></i>
                         </div>
-                        <h3 class="card-title">面向二次元场景的多角色情感交互平台原型</h3>
-                        <p class="card-desc">基于Streamlit构建，利用OpenAI框架支持多方API，在腾讯云上部署并由Nginx反向代理</p>
+                        <h3 class="card-title">Multi-Character Emotional Interaction Platform for Anime Scenarios</h3>
+                        <p class="card-desc">Built with Streamlit, leveraging OpenAI framework to support multiple APIs, deployed on Tencent Cloud with Nginx reverse proxy</p>
                     </div>
                     <div class="card-footer">
                         <div class="tags">
-                            <span class="tag">Streamlit</span> <!-- 核心框架 -->
-                            <span class="tag">OpenAI API</span> <!-- 关键技术 -->
-                            <span class="tag">Nginx</span> <!-- 部署组件 -->
+                            <span class="tag">Streamlit</span>
+                            <span class="tag">OpenAI API</span>
+                            <span class="tag">Nginx</span>
                         </div>
                         <a href="http://43.143.77.167:8180/" target="_blank" class="project-link external">
-                            <i class="fas fa-external-link-alt"></i> <span style="white-space: nowrap;">访问</span>
+                            <i class="fas fa-external-link-alt"></i> <span style="white-space: nowrap;">Visit</span>
                         </a>
                     </div>
                 </div>
 
-                <!-- 项目3：VR系统 -->
+                <!-- Project 3: VR System -->
                 <div class="project-card">
                     <div class="card-header">
                         <div class="card-icon">
-                            <i class="fas fa-vr-cardboard"></i> <!-- 强调交互地板特性 -->
+                            <i class="fas fa-vr-cardboard"></i>
                         </div>
-                        <h3 class="card-title">多通道多模态融合的VR空间感知增强系统</h3>
-                        <p class="card-desc">构建结合空间音频与震动反馈的交互地板界面，显著提升虚拟环境中用户的方向辨识与沉浸感。</p>
+                        <h3 class="card-title">VR Spatial Perception Enhancement System with Multi-Channel Fusion</h3>
+                        <p class="card-desc">Interactive floor interface combining spatial audio and vibration feedback, enhancing direction recognition and immersion in virtual environments</p>
                     </div>
                     <div class="card-footer">
                         <div class="tags">
-                            <span class="tag">Unity 3D</span> <!-- VR开发主流工具 -->
-                            <span class="tag">Spatial Audio</span> <!-- 核心技术 -->
-                            <span class="tag">Haptics</span> <!-- 震动反馈技术 -->
+                            <span class="tag">Unity 3D</span>
+                            <span class="tag">Spatial Audio</span>
+                            <span class="tag">Haptics</span>
                         </div>
                         <a href="projects/vr.html" class="project-link">
-                            <i class="fas fa-arrow-right"></i> <span style="white-space: nowrap;">详情</span>
+                            <i class="fas fa-arrow-right"></i> <span style="white-space: nowrap;">Details</span>
                         </a>
                     </div>
                 </div>
 
-                <!-- 项目4：设计智能体 -->
+                <!-- Project 4: Design Agent -->
                 <div class="project-card">
                     <div class="card-header">
                         <div class="card-icon">
-                            <i class="fas fa-code"></i> <!-- 强调编译特性 -->
+                            <i class="fas fa-code"></i>
                         </div>
-                        <h3 class="card-title">IxDL语义编译与交互设计生成智能体</h3>
-                        <p class="card-desc">实现结构化交互语言与自然语言双向映射，探索交互设计意图的语义表达与可视化反馈路径。</p>
+                        <h3 class="card-title">IxDL Semantic Compiler and Interaction Design Agent</h3>
+                        <p class="card-desc">Bidirectional mapping between structured interaction language and natural language, exploring semantic expression of design intent and visual feedback pathways</p>
                     </div>
                     <div class="card-footer">
                         <div class="tags">
-                            <span class="tag">NLP</span> <!-- 自然语言处理 -->
-                            <span class="tag">Compiler</span> <!-- 编译技术 -->
-                            <span class="tag">Workflow</span> <!-- 可视化常用框架 -->
+                            <span class="tag">NLP</span>
+                            <span class="tag">Compiler</span>
+                            <span class="tag">Workflow</span>
                         </div>
                         <a href="projects/IxDL.html" class="project-link">
-                            <i class="fas fa-arrow-right"></i> <span style="white-space: nowrap;">详情</span>
+                            <i class="fas fa-arrow-right"></i> <span style="white-space: nowrap;">Details</span>
                         </a>
                     </div>
                 </div>
 
-                <!-- 项目5：学术检索 -->
+                <!-- Project 5: Academic Retrieval -->
                 <div class="project-card">
                     <div class="card-header">
                         <div class="card-icon">
-                            <i class="fas fa-book-reader"></i> <!-- 强调学术阅读 -->
+                            <i class="fas fa-book-reader"></i>
                         </div>
-                        <h3 class="card-title">基于LangChain框架的学术RAG系统与智能检索代理</h3>
-                        <p class="card-desc">融合本地文献与在线数据库内容，通过 RAG 、Google Scholar和观点验证机制构建可对话的科研辅助工具。</p>
+                        <h3 class="card-title">Academic RAG System & Intelligent Retrieval Agent with LangChain</h3>
+                        <p class="card-desc">Integrates local literature and online databases through RAG, Google Scholar, and viewpoint verification for conversational research assistance</p>
                     </div>
                     <div class="card-footer">
                         <div class="tags">
-                            <span class="tag">LangChain</span> <!-- 核心框架 -->
-                            <span class="tag">RAG</span> <!-- 关键技术 -->
-                            <span class="tag">Google Scholar</span> <!-- 文献检索常用 -->
+                            <span class="tag">LangChain</span>
+                            <span class="tag">RAG</span>
+                            <span class="tag">Google Scholar</span>
                         </div>
                         <a href="projects/ongoing.html" class="project-link">
-                            <i class="fas fa-arrow-right"></i> <span style="white-space: nowrap;">详情</span>
+                            <i class="fas fa-arrow-right"></i> <span style="white-space: nowrap;">Details</span>
                         </a>
                     </div>
                 </div>
 
-                <!-- 项目6：声景平台 -->
+                <!-- Project 6: Soundscape Platform -->
                 <div class="project-card">
                     <div class="card-header">
                         <div class="card-icon">
-                            <i class="fas fa-wave-square"></i> <!-- 声波可视化 -->
+                            <i class="fas fa-wave-square"></i>
                         </div>
-                        <h3 class="card-title">城市声景可视化与混音交互平台</h3>
-                        <p class="card-desc">集成音频切片、降维聚类与 D3.js 动态渲染，实现基于 Web 的声音探索与体验式数据交互。</p>
+                        <h3 class="card-title">Urban Soundscape Visualization & Mixing Platform</h3>
+                        <p class="card-desc">Web-based sound exploration with audio slicing, dimensionality reduction clustering, and D3.js dynamic rendering</p>
                     </div>
                     <div class="card-footer">
                         <div class="tags">
-                            <span class="tag">Web Audio API</span> <!-- 核心技术 -->
-                            <span class="tag">D3.js</span> <!-- 已提及技术 -->
-                            <span class="tag">Visualization</span> <!-- 音频处理 -->
+                            <span class="tag">Web Audio API</span>
+                            <span class="tag">D3.js</span>
+                            <span class="tag">Visualization</span>
                         </div>
                         <a href="https://urbansounddiary.com" target="_blank" class="project-link external">
-                            <i class="fas fa-external-link-alt"></i> <span style="white-space: nowrap;">访问</span>
+                            <i class="fas fa-external-link-alt"></i> <span style="white-space: nowrap;">Visit</span>
                         </a>
                     </div>
                 </div>
@@ -659,35 +647,35 @@
                 <a href="javascript:void(0);" class="social-link wechat-tooltip">
                     <i class="fa-brands fa-weixin"></i>
                     <span class="qr-code">
-                        <img src="wechat.jpg" alt="微信二维码">
+                        <img src="wechat.jpg" alt="WeChat QR Code">
                     </span>
                 </a>
                 <a href="javascript:void(0);" class="social-link wechat-tooltip">
                     <i class="fa-brands fa-qq"></i>
                     <span class="qr-code">
-                        <img src="qq.jpg" alt="微信二维码">
+                        <img src="qq.jpg" alt="QQ QR Code">
                     </span>
                 </a>
                 <a href="mailto:12333207@mail.sustech.edu.cn" class="social-link">
                     <i class="fas fa-envelope"></i>
                 </a>
             </div>
-            <p>© 2025 葵音个人项目集 | 部署于GitHub Pages</p>
-            <p>使用HTML, CSS构建</p>
+            <p>© 2025 Ku1yin's Personal Projects | Deployed on GitHub Pages</p>
+            <p>Built with HTML, CSS</p>
         </footer>
     </div>
 
     <!-- 右上角悬浮简历按钮 -->
     <div class="resume-float">
-        <a href="CV_文嘉懿.pdf" download title="下载简历" class="resume-float-btn">
+        <a href="CV_Jiayi.pdf" download title="Download Resume" class="resume-float-btn">
             <i class="fas fa-file-download"></i>
         </a>
     </div>
-
+    
     <!-- 语言切换按钮 -->
     <div class="lang-switch">
-        <a href="index_en.html" class="lang-btn" title="Switch to Chinese">
-            EN
+        <a href="index.html" class="lang-btn" title="Switch to Chinese">
+            中
         </a>
     </div>
 
@@ -726,5 +714,4 @@
         });
     </script>
 </body>
-
 </html>
